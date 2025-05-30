@@ -304,6 +304,7 @@ async function  signInWithUserAndPass (form: {user: string,pass: string}) {
     },
     content: content.json({ form }),
   })
+  return response
 }
 async function setAuthCookies(headers: Headers) {
   const cookieHeader = headers.get("set-cookie")
@@ -465,7 +466,7 @@ export const def: AuthPlatformDef = {
   },
 
   async signInWithUserAndPass(form: {user: string,pass: string}) {
-    return signInWithUserAndPass(form)
+    return await signInWithUserAndPass(form)
   },
 
   async verifyEmailAddress() {
